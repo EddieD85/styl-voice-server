@@ -6,7 +6,11 @@ app.get("/", async () => {
   return { message: "STYL Voice Server Running" };
 });
 
-app.post("/incoming-call", async (request, reply) => {
+app.post("/incoming-call", {
+  config: {
+    rawBody: true
+  }
+}, async (request, reply) => {
   const twiml = `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
   <Say voice="alice">Thank you for calling STYL. How may I help you today?</Say>
